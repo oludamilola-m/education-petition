@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f1f5;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.6rem;
+    line-height: 2.4004rem;
+}
+
+.home {
+    display: flex;
+    height: 100vh;
+    padding: 50px 30px;
+}
+
+.image {
+    background: url("/images/background-image.png");
+    flex: 2;
+    width: 50%;
+    background-size: cover;
+    background-position: 50%, 50%;
+    height: 590px;
+    display: block;
+}
+
+.details {
+    flex: 3;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.section-content h2 {
+    color: #446cb3;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 4rem;
+    font-weight: 200;
+    line-height: 9rem;
+}
+.section-content p {
+    color: #666;
+}
+
+.textField {
+    background-color: #f0f1f5;
+    border: 1px solid #446cb3;
+    border-radius: 30px;
+    color: #555;
+    padding: 15px 25px;
+    width: 90%;
+}
+
+.signature {
+    margin-top: 30px;
+}
+
+.sumbit-btn {
+    background-color: #446cb3;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    display: block;
+    font-size: 17px;
+    margin-top: 20px;
+    padding: 15px;
+    width: 15%;
+}
+
+.sumbit-btn:hover {
+    background-color: #fff;
+    border: 1px solid #446cb3;
+    color: #446cb3;
+}
+
+::placeholder {
+    font-size: 15px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.input-group {
+    display: flex;
+}
+
+.input-group div {
+    flex: 1;
+}
+
+form {
+    margin-top: 25px;
+}
