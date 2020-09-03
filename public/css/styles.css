@@ -52,6 +52,12 @@ body {
     width: 90%;
 }
 
+.textField:focus {
+    border: 1px solid #8897b1;
+    border-radius: 30px;
+    outline: none;
+}
+
 .signature {
     margin-top: 30px;
 }

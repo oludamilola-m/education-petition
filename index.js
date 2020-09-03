@@ -9,13 +9,23 @@ app.set("view engine", "hbs");
 app.engine("hbs", handlebars({ defaultLayout: "main", extname: ".hbs" }));
 
 app.use(express.static("./public"));
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+); // Allows us to access form data from post request in req.body
 
 app.get("/", (req, res) => {
-  res.redirect("/petition");
+    res.redirect("/petition");
 });
 
 app.get("/petition", (req, res) => {
-  res.render("petition");
+    res.render("petition");
+});
+
+app.post("/petition", (req, res) => {
+    console.log(req.body);
+    res.redirect("/petition");
 });
 // app.get("/cities", (req, res) => {
 //   db.getActors()
