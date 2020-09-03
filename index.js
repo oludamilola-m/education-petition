@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
+const PetitionController = require("./controllers/petition-controller");
 
 // app.set("view engine", "handlebars");
 // app.engine("handlebars", handlebars({ defaultLayout: "main" }));
@@ -19,14 +20,9 @@ app.get("/", (req, res) => {
     res.redirect("/petition");
 });
 
-app.get("/petition", (req, res) => {
-    res.render("petition");
-});
+app.get("/petition", PetitionController.home);
 
-app.post("/petition", (req, res) => {
-    console.log(req.body);
-    res.redirect("/petition");
-});
+app.post("/petition", PetitionController.createPetition);
 // app.get("/cities", (req, res) => {
 //   db.getActors()
 //     .then(({ rows }) => {
