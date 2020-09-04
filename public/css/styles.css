@@ -101,3 +101,54 @@ label {
 form {
     margin-top: 25px;
 }
+
+#draw {
+    background-color: white;
+}
+
+/* thanks template */
+
+.content {
+    height: 500px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 50%;
+}
+
+.content img {
+    width: 40%;
+}
+
+.content a {
+    color: #446cb3;
+    display: block;
+    font-size: 15px;
+    margin-top: 30px;
+    text-decoration: none;
+}
+
+.content h3 {
+    color: #446cb3;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 3rem;
+}
+
+.content p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+footer {
+    color: #666;
+    font-size: 15px;
+    position: fixed;
+    left: 640px;
+    bottom: 0;
+}
