@@ -21,3 +21,11 @@ module.exports.getSignatory = (id) => {
 module.exports.getSignature = (id) => {
     return db.query(`SELECT signature FROM signatories WHERE id = $1`, [id]);
 };
+
+module.exports.getAllSignature = () => {
+    return db.query(`SELECT first_name,last_name FROM signatories`);
+};
+
+module.exports.getNumbersOfRows = () => {
+    return db.query(`SELECT COUNT(*) FROM signatories`);
+};

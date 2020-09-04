@@ -1,4 +1,9 @@
-const { addSignatory, getSignature } = require("../db");
+const {
+    addSignatory,
+    getSignature,
+    getAllSignature,
+    getNumbersOfRows,
+} = require("../db");
 
 class PetitionController {
     static home(req, res) {
@@ -20,12 +25,25 @@ class PetitionController {
 
     static thanks(req, res) {
         const id = req.session.signatoryId;
-        if (!id) {
-            return res.redirect("/petition");
-        }
+
         getSignature(id)
             .then(({ rows }) => {
-                res.render("thanks", { signature: rows[0].signature });
+                const signature = rows[0].signature;
+                getNumbersOfRows().then(({ rows }) => {
+                    res.render("thanks", { signature, total: rows[0].count });
+                });
+            })
+            .catch((err) => {
+                return res.redirect("/petition");
+            });
+    }
+
+    static getAllSignatories(req, res) {
+        getAllSignature()
+            .then(({ rows }) => {
+                res.render("signers", {
+                    signers: rows,
+                });
             })
             .catch((err) => {
                 return res.redirect("/petition");
