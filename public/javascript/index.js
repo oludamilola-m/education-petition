@@ -33,4 +33,34 @@ canvas.addEventListener("mousedown", (e) => {
 
 canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("mouseup", () => (isDrawing = false));
+
 canvas.addEventListener("mouseout", () => (isDrawing = false));
+
+const form = document.querySelector("form");
+form.addEventListener("submit", (event) => {
+    let errors = [];
+    const firstName = document.querySelector("#firstName").value;
+    const lastName = document.querySelector("#lastName").value;
+    const signature = document.querySelector("#signature").value;
+
+    if (firstName === "") {
+        errors.push("Please provide your first name");
+    }
+    if (lastName === "") {
+        errors.push("Please provide your last name");
+    }
+
+    if (signature === "") {
+        errors.push("Please sign the petition");
+    }
+
+    if (errors.length > 0) {
+        event.preventDefault();
+        const errorField = document.querySelector("#form-errors");
+        errors.forEach((error) => {
+            const li = document.createElement("li");
+            li.textContent = error;
+            errorField.append(li);
+        });
+    }
+});

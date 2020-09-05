@@ -7,7 +7,12 @@ const {
 
 class PetitionController {
     static home(req, res) {
-        res.render("petition");
+        let error;
+        if (req.session.error) {
+            error = "An error occured";
+            req.session.error = false;
+        }
+        res.render("petition", { error: error });
     }
 
     static createPetition(req, res) {
@@ -19,6 +24,7 @@ class PetitionController {
             })
             .catch((err) => {
                 console.log(err);
+                req.session.error = true;
                 res.redirect("/petition");
             });
     }
@@ -43,6 +49,11 @@ class PetitionController {
             .then(({ rows }) => {
                 res.render("signers", {
                     signers: rows,
+                    helpers: {
+                        capitalize(str) {
+                            return str.slice(0, 1).toUpperCase() + str.slice(1);
+                        },
+                    },
                 });
             })
             .catch((err) => {

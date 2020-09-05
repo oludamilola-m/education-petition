@@ -1,10 +1,6 @@
 const spicedPg = require("spiced-pg");
 const db = spicedPg("postgres:postgres:postgres@localhost:5432/petition");
 
-module.exports.getActors = () => {
-    return db.query("SELECT * FROM cities");
-};
-
 module.exports.addSignatory = (firstName, lastName, signature, signedAt) => {
     return db.query(
         `INSERT INTO signatories (first_name,last_name,signature, signed_at ) 

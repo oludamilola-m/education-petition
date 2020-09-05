@@ -109,7 +109,6 @@ form {
 /* thanks template */
 
 .content {
-    height: 500px;
     margin: auto;
     margin-top: 100px;
     margin-bottom: 30px;
@@ -146,9 +145,39 @@ form {
 }
 
 footer {
+    bottom: 50px;
     color: #666;
     font-size: 15px;
-    position: fixed;
-    left: 640px;
-    bottom: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.signers {
+    margin-top: 50px;
+    width: 40%;
+}
+
+.signers :first-child {
+    color: #446cb3;
+    font-size: 1.8rem;
+}
+
+.signers p:not(:nth-child(1)) {
+    margin-bottom: 0;
+}
+
+main {
+    min-height: 78vh;
+}
+
+#form-errors {
+    background: #9a3333;
+    border-radius: 5px;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+#form-errors li {
+    font-size: 13px;
+    color: #fff;
 }

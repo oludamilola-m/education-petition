@@ -5,6 +5,11 @@
             <h2>Make Education Free for All</h2>
             <p>All kids deserve equal educational opportunities, no matter who they are or what they look like. Everyone is equal. Treat them the same.</p>
             <form action="/petition" method="POST">
+                <ul id="form-errors">
+                    {{#if error}}
+                        <li style="list-style: none;">{{ error }}</li>
+                    {{/if}}
+                </ul>
                 <div class="input-group">
                     <div>
                         <label for="firstName">First Name: </label>
