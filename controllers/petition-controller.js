@@ -12,6 +12,8 @@ class PetitionController {
             error = "An error occured";
             req.session.error = false;
         }
+        //prevent csrf
+        res.locals.csrfToken = req.csrfToken();
         res.render("petition", { error: error });
     }
 
@@ -23,7 +25,6 @@ class PetitionController {
                 res.redirect("/thanks");
             })
             .catch((err) => {
-                console.log(err);
                 req.session.error = true;
                 res.redirect("/petition");
             });

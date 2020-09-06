@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cookieSession = require("cookie-session");
-//const csurf = require("csurf");
+const csurf = require("csurf");
 const handlebars = require("express-handlebars");
 const PetitionController = require("./controllers/petition-controller");
 const { authenticate } = require("./middlewares/auth-middleware");
@@ -20,17 +20,15 @@ app.use(
         maxAge: 1000 * 60 * 60 * 24 * 14,
     })
 );
-// app.use(csurf());
+app.use(csurf());
 
 app.use(authenticate);
 
-// app.use(function (req, res, next) {
-//     //prevent csrf
-//     res.locals.csrfToken = req.csrfToken();
-//     //prevent clickjacking
-//     res.setHeader("x-frame-options", "deny");
-//     next();
-// });
+app.use(function (req, res, next) {
+    //prevent clickjacking
+    res.setHeader("x-frame-options", "deny");
+    next();
+});
 
 app.get("/", (req, res) => {
     res.redirect("/petition");
