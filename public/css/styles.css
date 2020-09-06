@@ -103,7 +103,9 @@ form {
 }
 
 #draw {
-    background-color: white;
+    border: 1px solid #446cb3;
+    border-radius: 50px;
+    /* background-color: white; */
 }
 
 /* thanks template */
