@@ -1,5 +1,14 @@
 const spicedPg = require("spiced-pg");
-const db = spicedPg("postgres:postgres:postgres@localhost:5432/petition");
+require("dotenv").config();
+
+let dbUrl;
+
+if (process.env.NODE_ENV == "test") {
+    dbUrl = process.env.TEST_DB_URL;
+} else {
+    dbUrl = process.env.DB_URL;
+}
+const db = spicedPg(dbUrl);
 
 module.exports.addSignatory = (firstName, lastName, signature, signedAt) => {
     return db.query(

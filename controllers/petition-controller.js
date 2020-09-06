@@ -13,8 +13,8 @@ class PetitionController {
             req.session.error = false;
         }
         //prevent csrf
-        res.locals.csrfToken = req.csrfToken();
-        res.render("petition", { error: error });
+        const csrfToken = req.csrfToken();
+        res.render("petition", { error, csrfToken });
     }
 
     static createPetition(req, res) {

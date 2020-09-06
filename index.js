@@ -5,6 +5,7 @@ const csurf = require("csurf");
 const handlebars = require("express-handlebars");
 const PetitionController = require("./controllers/petition-controller");
 const { authenticate } = require("./middlewares/auth-middleware");
+require("dotenv").config();
 
 app.set("view engine", "hbs");
 app.engine("hbs", handlebars({ defaultLayout: "main", extname: ".hbs" }));
@@ -16,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
     cookieSession({
-        secret: `I'm always angry.`,
+        secret: process.env.COOKIE_SECRET,
         maxAge: 1000 * 60 * 60 * 24 * 14,
     })
 );

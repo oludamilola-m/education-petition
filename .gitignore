@@ -3,3 +3,6 @@ node_modules
 package-lock.json
 secrets.json
 .vscode
+.env
+cypress/integration/examples
+cypress.json
