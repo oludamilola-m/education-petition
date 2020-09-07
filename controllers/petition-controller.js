@@ -2,7 +2,7 @@ const {
     addSignatory,
     getSignature,
     getAllSignature,
-    getNumbersOfRows,
+    getTotalSigners,
 } = require("../db");
 
 class PetitionController {
@@ -12,9 +12,8 @@ class PetitionController {
             error = "An error occured";
             req.session.error = false;
         }
-        //prevent csrf
-        const csrfToken = req.csrfToken();
-        res.render("petition", { error, csrfToken });
+
+        res.render("petition", { error });
     }
 
     static createPetition(req, res) {
@@ -36,7 +35,7 @@ class PetitionController {
         getSignature(id)
             .then(({ rows }) => {
                 const signature = rows[0].signature;
-                getNumbersOfRows().then(({ rows }) => {
+                getTotalSigners().then(({ rows }) => {
                     res.render("thanks", { signature, total: rows[0].count });
                 });
             })

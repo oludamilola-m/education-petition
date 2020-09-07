@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-//const bc = require("./bc");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const handlebars = require("express-handlebars");
@@ -30,6 +29,7 @@ app.use(authenticate);
 app.use(function (req, res, next) {
     //prevent clickjacking
     res.setHeader("x-frame-options", "deny");
+    res.locals.csrfToken = req.csrfToken();
     next();
 });
 
@@ -48,5 +48,7 @@ app.get("/signers", PetitionController.getAllSignatories);
 //registration
 
 app.get("/registration", RegistrationController.getSignUp);
+
+app.post("/registration", RegistrationController.createUser);
 
 app.listen(8080, () => console.log("petition server running"));

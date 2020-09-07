@@ -31,6 +31,15 @@ module.exports.getAllSignature = () => {
     return db.query(`SELECT first_name,last_name FROM signatories`);
 };
 
-module.exports.getNumbersOfRows = () => {
+module.exports.getTotalSigners = () => {
     return db.query(`SELECT COUNT(*) FROM signatories`);
+};
+
+module.exports.createUser = (firstName, lastName, email, password) => {
+    return db.query(
+        `INSERT INTO users (first_name, last_name, email, password)
+    VALUES ($1, $2, $3, $4)
+        RETURNING *`,
+        [firstName, lastName, email, password]
+    );
 };
