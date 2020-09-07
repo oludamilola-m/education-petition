@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
+//const bc = require("./bc");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const handlebars = require("express-handlebars");
 const PetitionController = require("./controllers/petition-controller");
+const RegistrationController = require("./controllers/registration-controller");
 const { authenticate } = require("./middlewares/auth-middleware");
 require("dotenv").config();
 
@@ -42,5 +44,9 @@ app.post("/petition", PetitionController.createPetition);
 app.get("/thanks", PetitionController.thanks);
 
 app.get("/signers", PetitionController.getAllSignatories);
+
+//registration
+
+app.get("/registration", RegistrationController.getSignUp);
 
 app.listen(8080, () => console.log("petition server running"));

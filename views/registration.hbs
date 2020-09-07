@@ -1,0 +1,29 @@
+<main class='registration'>
+    <div class='signup-content'>
+        <p>A world with education is within reach but we won't get there without your support.</p>
+        <p>Join our campaign team today!</p>
+        <form action="/registration" method="POST">
+            <div>
+                <div class="form-group">
+                    <label for="firstName">First Name: </label>
+                    <input type="text" id="firstName" name='firstName' placeholder='First Name' class='form-control'>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name: </label>
+                    <input type="text" id="lastName" name='lastName' placeholder='Last Name' class='form-control'>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name='email' placeholder='Email Address' class='form-control'>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" id="password" name='password' placeholder='Password' class='form-control'>
+                </div>
+            </div>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <input type="submit" value="Sign Up" class="signup-btn">
+        </form>
+    </div>
+    <div class='reg-image'></div>
+</main>

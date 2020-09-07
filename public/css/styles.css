@@ -10,6 +10,10 @@ body {
     line-height: 2.4004rem;
 }
 
+.wrapper {
+    min-height: 100vh;
+}
+
 .home {
     display: flex;
     height: 100vh;
@@ -147,11 +151,13 @@ form {
 }
 
 footer {
-    bottom: 50px;
+    bottom: 0;
     color: #666;
     font-size: 15px;
     margin: auto;
     text-align: center;
+    left: 672px;
+    position: absolute;
 }
 
 .signers {
@@ -182,4 +188,75 @@ main {
 #form-errors li {
     font-size: 13px;
     color: #fff;
+}
+
+/* registration */
+
+.registration {
+    display: flex;
+    min-height: 100vh;
+}
+
+.signup-content {
+    flex: 2;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.signup-content p:nth-child(1) {
+    color: #2d385e;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.signup-content p:nth-child(2) {
+    color: #2d385e;
+    font-size: 20px;
+}
+
+.form-control {
+    background-color: #fff;
+    border: solid 1px #bcc2ce;
+    border-radius: 3px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.1);
+    color: #333333;
+    font-size: 18px;
+    height: 50px;
+    margin-bottom: 15px;
+    padding: 13px 192px 12px 20px;
+    outline: none;
+}
+
+.form-group label {
+    margin-left: 76px;
+    margin-top: 0;
+    text-align: left;
+}
+
+.signup-btn {
+    background-color: #344063;
+    border-color: #fff;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 15px 50px;
+}
+
+.signup-btn:hover {
+    background-color: #fff;
+    color: #344063;
+    font-weight: bold;
+}
+
+.reg-image {
+    background: url("/images/background-image.png");
+    background-color: #344063;
+    background-size: cover;
+    background-position: 50%, 50%;
+    flex: 3.5;
+    width: 50%;
 }
