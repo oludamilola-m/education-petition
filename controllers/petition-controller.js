@@ -7,32 +7,40 @@ const {
 
 class PetitionController {
     static home(req, res) {
-        let error;
-        if (req.session.error) {
-            error = "An error occured";
-            req.session.error = false;
-        }
-
-        res.render("petition", { error });
+        const { error } = req.session;
+        req.session.error = null;
+        getSignature(req.session.user.id)
+            .then(({ rows }) => {
+                console.log("rows count", rows.length);
+                if (rows.length > 0) {
+                    return res.redirect("/thanks");
+                } else {
+                    res.render("petition", { error });
+                }
+            })
+            .catch((err) => {
+                res.render("petition", { error });
+            });
     }
 
     static createPetition(req, res) {
-        const { firstName, lastName, signature } = req.body;
-        addSignatory(firstName, lastName, signature, new Date())
+        const { signature } = req.body;
+        const { user } = req.session;
+        console.log("user", user);
+        addSignatory(signature, user, new Date())
             .then((signatory) => {
                 req.session.signatoryId = signatory.rows[0].id;
                 res.redirect("/thanks");
             })
             .catch((err) => {
-                req.session.error = true;
+                console.log("err", err);
+                req.session.error = "An error occured";
                 res.redirect("/petition");
             });
     }
 
     static thanks(req, res) {
-        const id = req.session.signatoryId;
-
-        getSignature(id)
+        getSignature(req.session.userId)
             .then(({ rows }) => {
                 const signature = rows[0].signature;
                 getTotalSigners().then(({ rows }) => {

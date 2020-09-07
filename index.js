@@ -5,6 +5,7 @@ const csurf = require("csurf");
 const handlebars = require("express-handlebars");
 const PetitionController = require("./controllers/petition-controller");
 const RegistrationController = require("./controllers/registration-controller");
+const LoginController = require("./controllers/login-controller");
 const { authenticate } = require("./middlewares/auth-middleware");
 require("dotenv").config();
 
@@ -52,3 +53,8 @@ app.get("/registration", RegistrationController.getSignUp);
 app.post("/registration", RegistrationController.createUser);
 
 app.listen(8080, () => console.log("petition server running"));
+
+//Login
+
+app.get("/login", LoginController.getLogIn);
+app.post("/login", LoginController.login);

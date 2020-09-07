@@ -24,6 +24,7 @@ if (form) {
         if (errors.length > 0) {
             event.preventDefault();
             const errorField = document.querySelector("#form-errors");
+            errorField.innerHTML = "";
             errors.forEach((error) => {
                 const li = document.createElement("li");
                 li.textContent = `please enter ${error}`;

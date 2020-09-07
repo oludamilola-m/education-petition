@@ -192,18 +192,21 @@ main {
 
 /* registration */
 
-.registration {
+.registration,
+.login {
     display: flex;
     min-height: 100vh;
 }
 
-.signup-content {
+.signup-content,
+.login-content {
     flex: 2;
     padding-top: 50px;
     text-align: center;
 }
 
-.signup-content p:nth-child(1) {
+.signup-content p:nth-child(1),
+.login-content p:nth-child(1) {
     color: #2d385e;
     font-size: 23px;
     margin-bottom: 20px;
@@ -223,8 +226,9 @@ main {
     font-size: 18px;
     height: 50px;
     margin-bottom: 15px;
-    padding: 13px 192px 12px 20px;
+    padding: 13px 12px;
     outline: none;
+    width: 75%;
 }
 
 .form-group label {
@@ -233,7 +237,14 @@ main {
     text-align: left;
 }
 
-.signup-btn {
+#registration-form p,
+#registration-form a {
+    color: #2d385e;
+    font-size: 15px;
+}
+
+.signup-btn,
+.login-btn {
     background-color: #344063;
     border-color: #fff;
     border: none;
@@ -243,16 +254,19 @@ main {
     font-size: 18px;
     margin-bottom: 20px;
     margin-top: 20px;
+    outline: none;
     padding: 15px 50px;
 }
 
-.signup-btn:hover {
+.signup-btn:hover,
+.login-btn:hover {
     background-color: #fff;
     color: #344063;
     font-weight: bold;
 }
 
-.reg-image {
+.reg-image,
+.login-image {
     background: url("/images/background-image.png");
     background-color: #344063;
     background-size: cover;

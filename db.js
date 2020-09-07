@@ -10,12 +10,12 @@ if (process.env.NODE_ENV == "test") {
 }
 const db = spicedPg(dbUrl);
 
-module.exports.addSignatory = (firstName, lastName, signature, signedAt) => {
+module.exports.addSignatory = (signature, user, signedAt) => {
     return db.query(
-        `INSERT INTO signatories (first_name,last_name,signature, signed_at ) 
-    VALUES ($1,$2,$3, $4)
+        `INSERT INTO signatories (signature, first_name, last_name, user_id, signed_at ) 
+    VALUES ($1,$2,$3,$4,$5)
         RETURNING * `,
-        [firstName, lastName, signature, signedAt]
+        [signature, user.first_name, user.last_name, user.id, signedAt]
     );
 };
 
@@ -23,8 +23,11 @@ module.exports.getSignatory = (id) => {
     return db.query(`SELECT * FROM signatories WHERE id = $1`, [id]);
 };
 
-module.exports.getSignature = (id) => {
-    return db.query(`SELECT signature FROM signatories WHERE id = $1`, [id]);
+module.exports.getSignature = (user_id) => {
+    console.log("the user id", user_id);
+    return db.query(`SELECT signature FROM signatories WHERE user_id = $1`, [
+        user_id,
+    ]);
 };
 
 module.exports.getAllSignature = () => {
@@ -42,4 +45,8 @@ module.exports.createUser = (firstName, lastName, email, password) => {
         RETURNING *`,
         [firstName, lastName, email, password]
     );
+};
+
+module.exports.findUserByEmail = (email) => {
+    return db.query(`SELECT * FROM users WHERE email = $1`, [email]);
 };
