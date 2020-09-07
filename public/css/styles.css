@@ -260,3 +260,9 @@ main {
     flex: 3.5;
     width: 50%;
 }
+
+.registration-errors {
+    margin: auto;
+    text-align: left;
+    width: 75%;
+}

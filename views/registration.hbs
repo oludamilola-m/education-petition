@@ -2,7 +2,14 @@
     <div class='signup-content'>
         <p>A world with education is within reach but we won't get there without your support.</p>
         <p>Join our campaign team today!</p>
-        <form action="/registration" method="POST">
+        <form action="/registration" method="POST" id="registration-form">
+                <div class="registration-errors">
+                    <ul id="form-errors">
+                        {{#if error}}
+                            <li style="list-style: none;">{{ error }}</li>
+                        {{/if}}
+                    </ul>
+                </div>
             <div>
                 <div class="form-group">
                     <label for="firstName">First Name: </label>

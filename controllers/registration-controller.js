@@ -12,6 +12,7 @@ class RegistrationController {
 
         db.createUser(firstName, lastName, email, hashedPassword)
             .then(({ rows }) => {
+                req.session.userId = rows[0].id;
                 return res.redirect("/petition");
             })
             .catch((err) => {
