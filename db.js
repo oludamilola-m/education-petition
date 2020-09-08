@@ -24,7 +24,7 @@ module.exports.getSignatory = (id) => {
 };
 
 module.exports.getSignature = (user_id) => {
-    console.log("the user id", user_id);
+    // console.log("the user id", user_id);
     return db.query(`SELECT signature FROM signatories WHERE user_id = $1`, [
         user_id,
     ]);
@@ -50,3 +50,25 @@ module.exports.createUser = (firstName, lastName, email, password) => {
 module.exports.findUserByEmail = (email) => {
     return db.query(`SELECT * FROM users WHERE email = $1`, [email]);
 };
+
+// profile
+module.exports.createProfile = (age, city, url, user) => {
+    return db.query(
+        `INSERT INTO user_profiles (age, city, url, user_id)
+    VALUES ($1, $2, $3, $4)
+        RETURNING *`,
+        [age, city, url, user.id]
+    );
+};
+
+module.exports.getUsersProfileInfo = () => {
+    return db.query(
+        `SELECT * FROM users
+    JOIN user_profiles
+    ON users.id = user_profiles.user_id
+    JOIN signatories
+    ON users.id = signatories.user_id`
+    );
+};
+
+// select city from user_profiles where city = city

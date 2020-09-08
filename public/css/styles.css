@@ -193,13 +193,15 @@ main {
 /* registration */
 
 .registration,
-.login {
+.login,
+.profile {
     display: flex;
     min-height: 100vh;
 }
 
 .signup-content,
-.login-content {
+.login-content,
+.profile-content {
     flex: 2;
     padding-top: 50px;
     text-align: center;
@@ -266,7 +268,8 @@ main {
 }
 
 .reg-image,
-.login-image {
+.login-image,
+.profile-image {
     background: url("/images/background-image.png");
     background-color: #344063;
     background-size: cover;
@@ -279,4 +282,10 @@ main {
     margin: auto;
     text-align: left;
     width: 75%;
+}
+
+.signers-url:hover {
+    color: red;
+    font-style: italic;
+    text-decoration: underline;
 }

@@ -14,7 +14,8 @@ class RegistrationController {
             .then(({ rows }) => {
                 req.session.userId = rows[0].id;
                 req.session.user = rows[0];
-                return res.redirect("/petition");
+                return res.redirect("/profile");
+                //return res.redirect("/petition");
             })
             .catch((err) => {
                 console.log("err: ", err);

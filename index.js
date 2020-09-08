@@ -6,6 +6,8 @@ const handlebars = require("express-handlebars");
 const PetitionController = require("./controllers/petition-controller");
 const RegistrationController = require("./controllers/registration-controller");
 const LoginController = require("./controllers/login-controller");
+const ProfileController = require("./controllers/profile-controller");
+
 const { authenticate } = require("./middlewares/auth-middleware");
 require("dotenv").config();
 
@@ -58,3 +60,8 @@ app.listen(8080, () => console.log("petition server running"));
 
 app.get("/login", LoginController.getLogIn);
 app.post("/login", LoginController.login);
+
+// profile
+
+app.get("/profile", ProfileController.getProfileDetails);
+app.post("/profile", ProfileController.profile);

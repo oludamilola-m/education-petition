@@ -3,6 +3,7 @@ const {
     getSignature,
     getAllSignature,
     getTotalSigners,
+    getUsersProfileInfo,
 } = require("../db");
 
 class PetitionController {
@@ -11,7 +12,7 @@ class PetitionController {
         req.session.error = null;
         getSignature(req.session.user.id)
             .then(({ rows }) => {
-                console.log("rows count", rows.length);
+                // console.log("rows count", rows.length);
                 if (rows.length > 0) {
                     return res.redirect("/thanks");
                 } else {
@@ -26,7 +27,7 @@ class PetitionController {
     static createPetition(req, res) {
         const { signature } = req.body;
         const { user } = req.session;
-        console.log("user", user);
+        //console.log("user", user);
         addSignatory(signature, user, new Date())
             .then((signatory) => {
                 req.session.signatoryId = signatory.rows[0].id;
@@ -43,9 +44,17 @@ class PetitionController {
         getSignature(req.session.userId)
             .then(({ rows }) => {
                 const signature = rows[0].signature;
-                getTotalSigners().then(({ rows }) => {
-                    res.render("thanks", { signature, total: rows[0].count });
-                });
+                getTotalSigners()
+                    .then(({ rows }) => {
+                        console.log("rows[0].count: ", rows[0].count);
+                        res.render("thanks", {
+                            signature,
+                            total: rows[0].count,
+                        });
+                    })
+                    .catch((err) => {
+                        return res.redirect("/petition");
+                    });
             })
             .catch((err) => {
                 return res.redirect("/petition");
@@ -53,8 +62,11 @@ class PetitionController {
     }
 
     static getAllSignatories(req, res) {
-        getAllSignature()
+        console.log("i can run......");
+        // getAllSignature();
+        getUsersProfileInfo()
             .then(({ rows }) => {
+                console.log("rows ", rows);
                 res.render("signers", {
                     signers: rows,
                     helpers: {
@@ -65,6 +77,7 @@ class PetitionController {
                 });
             })
             .catch((err) => {
+                console.log("err: ", err);
                 return res.redirect("/petition");
             });
     }

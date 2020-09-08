@@ -1,6 +1,11 @@
 <main class="signers content">
     <p>We the undersigned demands that Education be make free for all</p>
    {{#signers}}
-        <p>{{capitalize this.first_name}} {{capitalize this.last_name}}</p>
+        {{#if url}}
+        <p><a class='signers-url' target="_blank" href={{this.url}}>{{capitalize this.first_name}} {{capitalize this.last_name}}</a>{{this.age}} {{this.city}}</p>
+        {{else}}
+        <p>{{capitalize this.first_name}} {{capitalize this.last_name}} {{this.age}} {{this.city}}</p>
+        {{/if}}
+
    {{/signers}}
 </main>

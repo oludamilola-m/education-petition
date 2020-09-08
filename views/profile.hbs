@@ -1,0 +1,31 @@
+<main class='profile'>
+    <div class='profile-image'></div>
+    <div class='profile-content'>
+        <p>Please tell us just a little bit more about yourself!</p>
+        <form action="/profile" method="POST" id="profile-form">
+                {{!-- <div class="registration-errors">
+                    <ul id="form-errors">
+                        {{#if error}}
+                            <li style="list-style: none;">{{ error }}</li>
+                        {{/if}}
+                    </ul>
+                </div> --}}
+            <div>
+                <div class="form-group">
+                    <label for="age">Age: </label>
+                    <input type="number" id="age" name='age' placeholder='Age' class='form-control'>
+                </div>
+                <div class="form-group">
+                    <label for="city">City: </label>
+                    <input type="text" id="city" name='city' placeholder='Your City' class='form-control'>
+                </div>
+                <div class="form-group">
+                    <label for="url">URL: </label>
+                    <input type="url" id="url" name='url' placeholder='Add a url address' class='form-control'>
+                </div>
+            </div>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <input type="submit" value="Continue" class="login-btn">
+        </form>
+    </div>
+</main>
