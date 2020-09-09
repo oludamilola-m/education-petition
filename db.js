@@ -8,7 +8,7 @@ if (process.env.NODE_ENV == "test") {
 } else {
     dbUrl = process.env.DB_URL;
 }
-const db = process.env.DATABASE_URL || spicedPg(dbUrl);
+const db = spicedPg(process.env.DATABASE_URL || dbUrl);
 
 module.exports.addSignatory = (signature, user, signedAt) => {
     return db.query(

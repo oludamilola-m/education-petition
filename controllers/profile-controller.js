@@ -50,10 +50,10 @@ class ProfileController {
             });
     }
 
-    // static updateUserInfo(req, res) {
-    //     console.log("hi");
-    //     console.log("result: ", req.body);
-    // }
+    static updateUserInfo(req, res) {
+        console.log("hi");
+        console.log("result: ", req.body);
+    }
 }
 
 module.exports = ProfileController;
