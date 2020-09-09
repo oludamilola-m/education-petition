@@ -4,7 +4,7 @@ CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL CHECK (first_name != ''),
     last_name VARCHAR(255) NOT NULL CHECK (last_name != ''),
-    email VARCHAR NOT NULL (email != '') UNIQUE,
+    email VARCHAR NOT NULL UNIQUE,
     password VARCHAR NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

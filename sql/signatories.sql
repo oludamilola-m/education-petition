@@ -7,4 +7,4 @@ CREATE TABLE signatories(
     signature TEXT NOT NULL CHECK (signature != ''),
     user_id INTEGER NOT NULL,
     signed_at timestamp
-)
+);

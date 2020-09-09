@@ -117,7 +117,6 @@ form {
 .content {
     margin: auto;
     margin-top: 100px;
-    margin-bottom: 30px;
     text-align: center;
     width: 50%;
 }
@@ -156,8 +155,8 @@ footer {
     font-size: 15px;
     margin: auto;
     text-align: center;
-    left: 672px;
-    position: absolute;
+    /* left: 672px; */
+    position: relative;
 }
 
 .signers {
@@ -175,7 +174,7 @@ footer {
 }
 
 main {
-    min-height: 78vh;
+    min-height: 100vh;
 }
 
 #form-errors {

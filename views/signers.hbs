@@ -2,10 +2,11 @@
     <p>We the undersigned demands that Education be make free for all</p>
    {{#signers}}
         {{#if url}}
-        <p><a class='signers-url' target="_blank" href={{this.url}}>{{capitalize this.first_name}} {{capitalize this.last_name}}</a>{{this.age}} {{this.city}}</p>
+        <p><a class='signers-url' target="_blank" href={{this.url}}>{{capitalize this.first_name}} {{capitalize this.last_name}}</a>{{this.age}}</p>
         {{else}}
-        <p>{{capitalize this.first_name}} {{capitalize this.last_name}} {{this.age}} {{this.city}}</p>
+        <p>{{capitalize this.first_name}} {{capitalize this.last_name}} {{this.age}}</p>
         {{/if}}
+        <a style="font-size: 13px" href='/signers/{{this.city}}'>{{this.city}}</a>
 
    {{/signers}}
 </main>

@@ -51,17 +51,25 @@ app.get("/signers", PetitionController.getAllSignatories);
 //registration
 
 app.get("/registration", RegistrationController.getSignUp);
-
 app.post("/registration", RegistrationController.createUser);
 
-app.listen(8080, () => console.log("petition server running"));
-
 //Login
-
 app.get("/login", LoginController.getLogIn);
 app.post("/login", LoginController.login);
 
 // profile
-
 app.get("/profile", ProfileController.getProfileDetails);
 app.post("/profile", ProfileController.profile);
+
+//get city
+app.get("/signers/:city", ProfileController.getSignersByCity);
+
+//edit-profile
+app.get("/profile/edit", ProfileController.updateUser);
+app.post("/profile/edit", ProfileController.updateUserInfo);
+
+// app.post("/delete", ProfileController.deleteUserSignature);
+
+app.listen(process.env.PORT || 8080, () =>
+    console.log("petition server running")
+);

@@ -8,7 +8,7 @@ if (process.env.NODE_ENV == "test") {
 } else {
     dbUrl = process.env.DB_URL;
 }
-const db = spicedPg(dbUrl);
+const db = process.env.DATABASE_URL || spicedPg(dbUrl);
 
 module.exports.addSignatory = (signature, user, signedAt) => {
     return db.query(
@@ -57,18 +57,48 @@ module.exports.createProfile = (age, city, url, user) => {
         `INSERT INTO user_profiles (age, city, url, user_id)
     VALUES ($1, $2, $3, $4)
         RETURNING *`,
-        [age, city, url, user.id]
+        [age || null, city || null, url || null, user.id]
     );
 };
 
-module.exports.getUsersProfileInfo = () => {
+module.exports.getSigners = () => {
     return db.query(
-        `SELECT * FROM users
+        `SELECT * FROM signatories
+    JOIN users
+    ON users.id = signatories.user_id
     JOIN user_profiles
-    ON users.id = user_profiles.user_id
-    JOIN signatories
-    ON users.id = signatories.user_id`
+    ON user_profiles.user_id  =  users.id 
+`
     );
 };
 
-// select city from user_profiles where city = city
+module.exports.findSignersByCity = (city) => {
+    return db.query(
+        `SELECT * FROM signatories
+        JOIN user_profiles
+        ON signatories.user_id = user_profiles.user_id 
+        WHERE LOWER(user_profiles.city) = LOWER($1)`,
+        [city]
+    );
+};
+
+module.exports.getUserProfile = () => {
+    return db.query(
+        `SELECT user_id,first_name, last_name, email, age, city, url  FROM users
+            JOIN user_profiles
+            ON users.id = user_profiles.user_id;`
+    );
+};
+
+// module.exports.updateUserProfile = (firstName, lastName, age, city) => {
+//     return db.query(
+//         `INSERT INTO users (first_name, last_name, email)
+//         VALUES (firstName, lastName, age, city)
+//         ON CONFLICT (name)
+//         DO UPDATE SET age = 43, oscars = 1;`
+//     );
+// };
+
+// module.exports.deleteSignature = () => {
+//     return db.query(`DELETE signature FROM signatories`);
+// };
