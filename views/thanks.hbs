@@ -5,7 +5,8 @@
     {{id}}
     <a href='/signers'>See all {{total}} other signers</a>
     <a href="/profile/edit">Edit Profile here</a>
-    {{!-- <form action="" method="POST">
-        <button style='border: none'><a href="/delete">Delete your signature</a></button>
-    </form> --}}
+    <form action="/delete" method="POST">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <button type="submit" style='border: none'>Delete your signature</a></button>
+    </form>
 </main>

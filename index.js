@@ -68,7 +68,7 @@ app.get("/signers/:city", ProfileController.getSignersByCity);
 app.get("/profile/edit", ProfileController.updateUser);
 app.post("/profile/edit", ProfileController.updateUserInfo);
 
-// app.post("/delete", ProfileController.deleteUserSignature);
+app.post("/delete", PetitionController.deleteUserSignature);
 
 app.listen(process.env.PORT || 8080, () =>
     console.log("petition server running")

@@ -1,5 +1,10 @@
 const bc = require("../bc");
-const { createProfile, findSignersByCity, getUserProfile } = require("../db");
+const {
+    createProfile,
+    findSignersByCity,
+    getUserProfile,
+    ...db
+} = require("../db");
 
 class ProfileController {
     static getProfileDetails(req, res) {
@@ -12,7 +17,6 @@ class ProfileController {
 
         createProfile(age, city, url, user)
             .then(({ rows }) => {
-                req.session.userId = rows[0].id;
                 return res.redirect("/petition");
             })
             .catch((err) => {
@@ -23,7 +27,6 @@ class ProfileController {
 
     static getSignersByCity(req, res) {
         const { city } = req.params;
-
         findSignersByCity(city)
             .then(({ rows }) => {
                 return res.render("signersByCity", {
@@ -36,12 +39,12 @@ class ProfileController {
     }
 
     static updateUser(req, res) {
-        getUserProfile()
+        const error = req.session.error;
+        req.session.error = null;
+        res.locals.error = error;
+        getUserProfile(req.session.user.id)
             .then(({ rows }) => {
-                console.log("rows with id: ", rows[0].user_id);
-                console.log("rows with id: ", rows[0]);
-
-                return res.render("edit-profile", {
+                res.render("edit-profile", {
                     userInfo: rows[0],
                 });
             })
@@ -51,8 +54,53 @@ class ProfileController {
     }
 
     static updateUserInfo(req, res) {
-        console.log("hi");
-        console.log("result: ", req.body);
+        const userId = req.session.user.id;
+        const {
+            firstName,
+            lastName,
+            email,
+            password,
+            age,
+            city,
+            url,
+        } = req.body;
+        db.updateProfile(age, city, url, userId)
+            .then(() => {
+                if (password === "") {
+                    db.updateUser(firstName, lastName, email, userId)
+                        .then(() => {
+                            return res.redirect("/thanks");
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            req.session.error = "Could not update profile";
+                            res.redirect("/profile/edit");
+                        });
+                } else {
+                    bc.hash(password).then((hashedPassword) => {
+                        db.updateUserWithPassword(
+                            firstName,
+                            lastName,
+                            email,
+                            hashedPassword,
+                            req.session.user.id
+                        )
+                            .then(() => {
+                                return res.redirect("/thanks");
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                                req.session.error = "Could not update profile";
+                                res.redirect("/profile/edit");
+                            });
+                    });
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                req.session.error = "Could not update profile";
+                res.redirect("/profile/edit");
+            });
     }
 }
 

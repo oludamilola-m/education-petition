@@ -1,8 +1,13 @@
 <main class='registration'>
     <div class='signup-content'>
         {{#userInfo}}
-            <p>Please {{this.first_name}} {{last_name}} edit your profile.</p>
-            <form action="/profile/edit" method="POST" id="registration-form">
+            <p>Edit your profile.</p>
+            <form action="/profile/edit" method="POST" id="">
+                <ul id="form-errors">
+                    {{#if ../error}}
+                        <li style="list-style: none;">{{ ../error }}</li>
+                    {{/if}}
+                </ul>
                 <div>
                     <div class="form-group">
                         <label for="firstName">First Name: </label>
@@ -14,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email: </label>
-                        <input type="email" id="email" name='email' value={{email}} class='form-control'>
+                        <input type="email" id="email" name='email' value="{{email}}" class='form-control'>
                     </div>
                     <div class="form-group">
                         <label for="password">Password: </label>
@@ -22,18 +27,18 @@
                     </div>
                     <div class="form-group">
                         <label for="age">Age: </label>
-                        <input type="number" id="age" name='age' value={{age}} class='form-control'>
+                        <input type="number" id="age" name='age' value="{{age}}" class='form-control'>
                     </div>
                     <div class="form-group">
                         <label for="city">City: </label>
-                        <input type="text" id="city" name='city' value={{city}} class='form-control'>
+                        <input type="text" id="city" name="city" value="{{city}}" class='form-control'>
                     </div>
                     <div class="form-group">
                         <label for="url">Homepage: </label>
-                        <input type="url" id="url" name='url' value={{url}} class='form-control'>
+                        <input type="url" id="url" name='url' value="{{url}}" class='form-control'>
                     </div>
                 </div>
-                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                <input type="hidden" name="_csrf" value="{{../csrfToken}}">
                 <input type="submit" value="Update" class="signup-btn">
             </form>
         {{/userInfo}}

@@ -3,6 +3,7 @@ const {
     getSignature,
     getTotalSigners,
     getSigners,
+    deleteSignature,
 } = require("../db");
 
 class PetitionController {
@@ -40,6 +41,9 @@ class PetitionController {
     static thanks(req, res) {
         getSignature(req.session.userId)
             .then(({ rows }) => {
+                if (rows.length === 0) {
+                    return res.redirect("/petition");
+                }
                 const signature = rows[0].signature;
                 getTotalSigners()
                     .then(({ rows }) => {
@@ -73,6 +77,16 @@ class PetitionController {
             .catch((err) => {
                 console.log("err: ", err);
                 return res.redirect("/petition");
+            });
+    }
+
+    static deleteUserSignature(req, res) {
+        deleteSignature(req.session.userId)
+            .then(() => {
+                res.redirect("/petition");
+            })
+            .catch((err) => {
+                res.redirect("/thanks");
             });
     }
 }

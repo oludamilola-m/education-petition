@@ -12,10 +12,10 @@ const db = spicedPg(process.env.DATABASE_URL || dbUrl);
 
 module.exports.addSignatory = (signature, user, signedAt) => {
     return db.query(
-        `INSERT INTO signatories (signature, first_name, last_name, user_id, signed_at ) 
-    VALUES ($1,$2,$3,$4,$5)
+        `INSERT INTO signatories (signature, user_id, signed_at ) 
+    VALUES ($1,$2,$3)
         RETURNING * `,
-        [signature, user.first_name, user.last_name, user.id, signedAt]
+        [signature, user.id, signedAt]
     );
 };
 
@@ -24,7 +24,6 @@ module.exports.getSignatory = (id) => {
 };
 
 module.exports.getSignature = (user_id) => {
-    // console.log("the user id", user_id);
     return db.query(`SELECT signature FROM signatories WHERE user_id = $1`, [
         user_id,
     ]);
@@ -76,29 +75,61 @@ module.exports.findSignersByCity = (city) => {
     return db.query(
         `SELECT * FROM signatories
         JOIN user_profiles
-        ON signatories.user_id = user_profiles.user_id 
+        ON signatories.user_id = user_profiles.user_id
+        JOIN users
+        ON signatories.user_id = users.id
         WHERE LOWER(user_profiles.city) = LOWER($1)`,
         [city]
     );
 };
 
-module.exports.getUserProfile = () => {
+module.exports.getUserProfile = (id) => {
     return db.query(
-        `SELECT user_id,first_name, last_name, email, age, city, url  FROM users
-            JOIN user_profiles
-            ON users.id = user_profiles.user_id;`
+        `SELECT *  FROM users
+            LEFT JOIN user_profiles
+            ON users.id = user_profiles.user_id
+            WHERE users.id = $1`,
+        [id]
     );
 };
 
-// module.exports.updateUserProfile = (firstName, lastName, age, city) => {
-//     return db.query(
-//         `INSERT INTO users (first_name, last_name, email)
-//         VALUES (firstName, lastName, age, city)
-//         ON CONFLICT (name)
-//         DO UPDATE SET age = 43, oscars = 1;`
-//     );
-// };
+module.exports.updateUser = (firstName, lastName, email, id) => {
+    return db.query(
+        `UPDATE users
+        SET first_name = $1, last_name = $2, email = $3
+        WHERE id = $4
+        RETURNING *`,
+        [firstName, lastName, email, id]
+    );
+};
 
-// module.exports.deleteSignature = () => {
-//     return db.query(`DELETE signature FROM signatories`);
-// };
+module.exports.updateUserWithPassword = (
+    firstName,
+    lastName,
+    email,
+    password,
+    id
+) => {
+    return db.query(
+        `update users 
+        SET first_name = $1, last_name = $2, email = $3, password = $4
+        WHERE id = $5
+        RETURNING *`,
+        [firstName, lastName, email, password, id]
+    );
+};
+
+module.exports.updateProfile = (age, city, url, user_id) => {
+    return db.query(
+        `INSERT INTO user_profiles (age, city, url, user_id)
+        VALUES ($1, $2, $3, $4)
+        ON CONFLICT (user_id)
+        DO UPDATE SET age = $1, city = $2, url = $3
+        RETURNING *`,
+        [age, city, url, user_id]
+    );
+};
+
+module.exports.deleteSignature = (userId) => {
+    return db.query(`DELETE FROM signatories WHERE user_id = $1`, [userId]);
+};
