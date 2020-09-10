@@ -1,12 +1,12 @@
 <main class='content'>
     <h3>Thank you for signing our petition to make Education free for all!</h3>
     <p>It's our believe that this will create opportunity for every child. Education helps in human wellness and enables one to function effectively in the world.</p>
-    <img src="{{signature}}" alt="signature" >
+    <img src="{{signature}}" alt="signature"  >
     {{id}}
-    <a href='/signers'>See all {{total}} other signers</a>
-    <a href="/profile/edit">Edit Profile here</a>
-    <form action="/delete" method="POST">
+    <a title='click' href='/signers'>See all {{total}} other signers</a>
+    <a title='click' href="/profile/edit">Edit Profile here</a>
+    <form action="/signature/delete" method="POST" class='delete-form'>
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
-        <button type="submit" style='border: none'>Delete your signature</a></button>
+        <button title='click' type="submit" class='delete-btn'>Delete your signature</a></button>
     </form>
 </main>

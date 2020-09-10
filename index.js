@@ -3,12 +3,12 @@ const app = express();
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const handlebars = require("express-handlebars");
-const PetitionController = require("./controllers/petition-controller");
-const RegistrationController = require("./controllers/registration-controller");
-const LoginController = require("./controllers/login-controller");
-const ProfileController = require("./controllers/profile-controller");
-
+const router = require("./routers");
 const { authenticate } = require("./middlewares/auth-middleware");
+
+const profileRouter = require("./routers/profile-router");
+const authRouter = require("./routers/auth-router");
+
 require("dotenv").config();
 
 app.set("view engine", "hbs");
@@ -26,49 +26,18 @@ app.use(
     })
 );
 app.use(csurf());
-
 app.use(authenticate);
-
 app.use(function (req, res, next) {
     //prevent clickjacking
     res.setHeader("x-frame-options", "deny");
     res.locals.csrfToken = req.csrfToken();
+    res.locals.isLoggedIn = !!req.session.userId;
     next();
 });
 
-app.get("/", (req, res) => {
-    res.redirect("/petition");
-});
-
-app.get("/petition", PetitionController.home);
-
-app.post("/petition", PetitionController.createPetition);
-
-app.get("/thanks", PetitionController.thanks);
-
-app.get("/signers", PetitionController.getAllSignatories);
-
-//registration
-
-app.get("/registration", RegistrationController.getSignUp);
-app.post("/registration", RegistrationController.createUser);
-
-//Login
-app.get("/login", LoginController.getLogIn);
-app.post("/login", LoginController.login);
-
-// profile
-app.get("/profile", ProfileController.getProfileDetails);
-app.post("/profile", ProfileController.profile);
-
-//get city
-app.get("/signers/:city", ProfileController.getSignersByCity);
-
-//edit-profile
-app.get("/profile/edit", ProfileController.updateUser);
-app.post("/profile/edit", ProfileController.updateUserInfo);
-
-app.post("/delete", PetitionController.deleteUserSignature);
+app.use("/profile", profileRouter);
+app.use("/", authRouter);
+app.use(router);
 
 app.listen(process.env.PORT || 8080, () =>
     console.log("petition server running")

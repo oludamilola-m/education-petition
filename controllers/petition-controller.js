@@ -4,6 +4,7 @@ const {
     getTotalSigners,
     getSigners,
     deleteSignature,
+    findSignersByCity,
 } = require("../db");
 
 class PetitionController {
@@ -65,6 +66,13 @@ class PetitionController {
     static getAllSignatories(req, res) {
         getSigners()
             .then(({ rows }) => {
+                const signed = rows.some((row) => {
+                    return row.user_id === req.session.userId;
+                });
+
+                if (!signed) {
+                    return res.redirect("/petition");
+                }
                 res.render("signers", {
                     signers: rows,
                     helpers: {
@@ -87,6 +95,25 @@ class PetitionController {
             })
             .catch((err) => {
                 res.redirect("/thanks");
+            });
+    }
+
+    static getSignersByCity(req, res) {
+        const { city } = req.params;
+        findSignersByCity(city)
+            .then(({ rows }) => {
+                return res.render("signersByCity", {
+                    signers: rows,
+                    city,
+                    helpers: {
+                        capitalize(str) {
+                            return str.slice(0, 1).toUpperCase() + str.slice(1);
+                        },
+                    },
+                });
+            })
+            .catch((err) => {
+                console.log("err: ", err);
             });
     }
 }

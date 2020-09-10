@@ -1,7 +1,7 @@
 const { findUserByEmail, getSignature } = require("../db");
 const bc = require("../bc");
 
-class LoginController {
+class AuthController {
     static getLogIn(req, res) {
         const error = req.session.error;
         req.session.error = null;
@@ -44,6 +44,12 @@ class LoginController {
                 res.redirect("/login");
             });
     }
+
+    static logout(req, res) {
+        req.session.userId = null;
+        req.session.user = null;
+        res.redirect("/login");
+    }
 }
 
-module.exports = LoginController;
+module.exports = AuthController;

@@ -1,12 +1,12 @@
-<main class="signers content">
-    <p>We the undersigned demands that Education be make free for all</p>
-   {{#signers}}
-        {{#if url}}
-        <p><a class='signers-url' target="_blank" href={{this.url}}>{{capitalize this.first_name}} {{capitalize this.last_name}}</a>{{this.age}}</p>
-        {{else}}
-        <p>{{capitalize this.first_name}} {{capitalize this.last_name}} {{this.age}}</p>
-        {{/if}}
-        <a style="font-size: 13px" href='/signers/{{this.city}}'>{{this.city}}</a>
+<main class='signers'>
+    <h4>We the undersigned demands that Education be make free in all nations of the world.</h4>
+        {{#signers}}
+            {{#if url}}
+                <p><a class='signers-url' target="_blank" href={{url}} title='click to view homepage'>{{capitalize first_name}} {{capitalize last_name}}</a>{{age}}<a class="signers-city" href='/signers/{{city}}' title='click to view other from {{city}}'>{{capitalize city}}</a></p>
+                {{else}}
+                <p>{{capitalize first_name}} {{capitalize last_name}} {{age}}<a  class="signers-city" href='/signers/{{city}}' title='click to view other from {{city}}'>{{capitalize city}}</a></p>
+            {{/if}}
+            
+        {{/signers}}  
 
-   {{/signers}}
 </main>

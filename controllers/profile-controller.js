@@ -25,19 +25,6 @@ class ProfileController {
             });
     }
 
-    static getSignersByCity(req, res) {
-        const { city } = req.params;
-        findSignersByCity(city)
-            .then(({ rows }) => {
-                return res.render("signersByCity", {
-                    signers: rows,
-                });
-            })
-            .catch((err) => {
-                console.log("err: ", err);
-            });
-    }
-
     static updateUser(req, res) {
         const error = req.session.error;
         req.session.error = null;

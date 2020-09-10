@@ -1,5 +1,6 @@
-<main>
-   {{#signers}}
-        {{this.first_name}} {{this.last_name}}
+<main class='signers'>
+   <h4>We the undersign people of {{capitalize city}} support that Education be made free for all.</h4>
+    {{#signers}}
+       <p>{{capitalize first_name}} {{capitalize last_name}} {{age}}</p>
    {{/signers}}
 </main>

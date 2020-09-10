@@ -129,7 +129,7 @@ form {
     color: #446cb3;
     display: block;
     font-size: 15px;
-    margin-top: 30px;
+    margin-top: 10px;
     text-decoration: none;
 }
 
@@ -149,28 +149,70 @@ form {
     margin-top: 30px;
 }
 
+.content img {
+    margin-left: 150px;
+    margin-bottom: 20px;
+}
+
+.delete-form {
+    margin-top: 0;
+}
+
+.delete-btn {
+    border: none;
+    color: #446cb3;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.content a:hover,
+.delete-btn:hover {
+    color: #1c284a;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
 footer {
     bottom: 0;
     color: #666;
     font-size: 15px;
     margin: auto;
     text-align: center;
-    /* left: 672px; */
+
     position: relative;
 }
 
 .signers {
-    margin-top: 50px;
-    width: 40%;
+    margin-top: 100px;
+    text-align: center;
 }
 
-.signers :first-child {
+.signers h4 {
     color: #446cb3;
-    font-size: 1.8rem;
+    margin: auto;
+    margin-bottom: 30px;
+    width: 35%;
 }
 
-.signers p:not(:nth-child(1)) {
-    margin-bottom: 0;
+.signers p {
+    color: #666666;
+    font-size: 18px;
+}
+
+.signers-city {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.signers-url {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.signers-url:hover,
+.signers-city:hover {
+    color: red;
+    font-style: italic;
 }
 
 main {
@@ -283,8 +325,17 @@ main {
     width: 75%;
 }
 
-.signers-url:hover {
-    color: red;
-    font-style: italic;
-    text-decoration: underline;
+@media (max-width: 600px) {
+    .profile-image,
+    .login-image,
+    .reg-image {
+        display: none;
+    }
+
+    .content {
+        margin: auto;
+        margin-top: 30px;
+        text-align: center;
+        width: 80%;
+    }
 }
