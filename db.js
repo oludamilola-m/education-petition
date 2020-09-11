@@ -30,7 +30,7 @@ module.exports.getSignature = (user_id) => {
 };
 
 module.exports.getAllSignature = () => {
-    return db.query(`SELECT first_name,last_name FROM signatories`);
+    return db.query(`SELECT * FROM signatories`);
 };
 
 module.exports.getTotalSigners = () => {
@@ -62,11 +62,11 @@ module.exports.createProfile = (age, city, url, user) => {
 
 module.exports.getSigners = () => {
     return db.query(
-        `SELECT * FROM signatories
+        `SELECT signatories.id, signatories.user_id, first_name, last_name, city, age FROM signatories
     JOIN users
     ON users.id = signatories.user_id
-    JOIN user_profiles
-    ON user_profiles.user_id  =  users.id 
+    LEFT JOIN user_profiles
+    ON user_profiles.user_id  =  signatories.user_id 
 `
     );
 };

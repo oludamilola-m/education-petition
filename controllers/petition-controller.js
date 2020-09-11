@@ -70,6 +70,8 @@ class PetitionController {
                     return row.user_id === req.session.userId;
                 });
 
+                console.log("have i signed", signed);
+
                 if (!signed) {
                     return res.redirect("/petition");
                 }
@@ -77,6 +79,9 @@ class PetitionController {
                     signers: rows,
                     helpers: {
                         capitalize(str) {
+                            if (!str) {
+                                return "";
+                            }
                             return str.slice(0, 1).toUpperCase() + str.slice(1);
                         },
                     },
@@ -107,6 +112,9 @@ class PetitionController {
                     city,
                     helpers: {
                         capitalize(str) {
+                            if (!str) {
+                                return "";
+                            }
                             return str.slice(0, 1).toUpperCase() + str.slice(1);
                         },
                     },
