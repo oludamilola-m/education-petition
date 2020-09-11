@@ -1,24 +1,39 @@
 <main class='profile'>
     <div class='profile-image'></div>
     <div class='profile-content'>
-        <p>Please tell us just a little bit more about yourself!</p>
-        <form action="/profile" method="POST" id="profile-form">
-            <div>
-                <div class="form-group">
-                    <label for="age">Age: </label>
-                    <input type="number" id="age" name='age' placeholder='Age' class='form-control'>
+        {{#if userProfile }}
+            <p>Age: {{userProfile.age}}</p>
+            <p>City: {{userProfile.city}}</p>
+            <p>Homepage: {{userProfile.url}}</p>
+
+            <h6> <a href="/profile/edit">Edit Profile</a></h6>
+
+        {{else}}
+            <p>Please tell us just a little bit more about yourself!</p>
+
+            <form action="/profile" method="POST" id="profile-form">
+                <div>
+                    <div class="form-group">
+                        <label for="age">Age: </label>
+                        <input type="number" id="age" name='age' placeholder='Age' class='form-control'>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City: </label>
+                        <input type="text" id="city" name='city' placeholder='Your City' class='form-control'>
+                    </div>
+                    <div class="form-group">
+                        <label for="url">Homepage: </label>
+                        <input type="url" id="url" name='url' placeholder='Add a url address' class='form-control'>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="city">City: </label>
-                    <input type="text" id="city" name='city' placeholder='Your City' class='form-control'>
-                </div>
-                <div class="form-group">
-                    <label for="url">Homepage: </label>
-                    <input type="url" id="url" name='url' placeholder='Add a url address' class='form-control'>
-                </div>
-            </div>
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                <input type="submit" value="Continue" class="login-btn">
+            </form>
+        {{/if}}
+
+        <form action="/users/delete" method="POST" class='delete-account-form'>
             <input type="hidden" name="_csrf" value="{{csrfToken}}">
-            <input type="submit" value="Continue" class="login-btn">
+            <button title='click' type="submit" class='delete-account-btn'>Delete your Account</button>
         </form>
     </div>
 </main>

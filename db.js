@@ -133,3 +133,7 @@ module.exports.updateProfile = (age, city, url, user_id) => {
 module.exports.deleteSignature = (userId) => {
     return db.query(`DELETE FROM signatories WHERE user_id = $1`, [userId]);
 };
+
+module.exports.deleteUser = (userId) => {
+    return db.query(`DELETE FROM users WHERE id= $1`, [userId]);
+};

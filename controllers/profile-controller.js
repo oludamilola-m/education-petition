@@ -8,7 +8,14 @@ const {
 
 class ProfileController {
     static getProfileDetails(req, res) {
-        res.render("profile");
+        getUserProfile(req.session.user.id)
+            .then(({ rows }) => {
+                res.locals.userProfile = rows[0];
+                res.render("profile");
+            })
+            .catch((err) => {
+                res.render("profile");
+            });
     }
 
     static profile(req, res) {

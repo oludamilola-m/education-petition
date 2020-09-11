@@ -154,8 +154,9 @@ form {
     margin-bottom: 20px;
 }
 
-.delete-form {
-    margin-top: 0;
+.delete-form,
+.delete-account-form {
+    margin-top: 5px;
 }
 
 .delete-btn {
@@ -165,11 +166,21 @@ form {
     font-size: 17px;
 }
 
+.delete-account-btn {
+    border: none;
+    color: #446cb3;
+    cursor: pointer;
+    font-size: 17px;
+    margin-top: 0;
+}
+
 .content a:hover,
-.delete-btn:hover {
+.delete-btn:hover,
+.delete-account-btn:hover {
     color: #1c284a;
     font-size: 18px;
     text-decoration: underline;
+    outline: none;
 }
 
 footer {

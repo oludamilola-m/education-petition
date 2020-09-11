@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const PetitionController = require("../controllers/petition-controller");
+const UserController = require("../controllers/user-controller");
 
 router.get("/", (req, res) => {
     res.redirect("/petition");
@@ -15,4 +16,6 @@ router.get("/signers", PetitionController.getAllSignatories);
 
 //get city
 router.get("/signers/:city", PetitionController.getSignersByCity);
+
+router.post("/users/delete", UserController.deleteUser);
 module.exports = router;

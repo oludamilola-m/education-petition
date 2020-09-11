@@ -5,7 +5,7 @@ CREATE TABLE user_profiles(
     age INT,
     city VARCHAR(255),
     url VARCHAR(255),
-    user_id INT NOT NULL REFERENCES users(id) UNIQUE,
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 );

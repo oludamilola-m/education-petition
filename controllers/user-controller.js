@@ -1,7 +1,7 @@
 const bc = require("../bc");
 const db = require("../db");
 
-class RegistrationController {
+class UserController {
     static getSignUp(req, res) {
         res.render("registration");
     }
@@ -21,6 +21,16 @@ class RegistrationController {
                 res.redirect("/registration");
             });
     }
+
+    static deleteUser(req, res) {
+        db.deleteUser(req.session.userId)
+            .then(() => {
+                req.session.user = null;
+                req.session.userId = null;
+                res.redirect("/registration");
+            })
+            .catch((err) => console.log(err));
+    }
 }
 
-module.exports = RegistrationController;
+module.exports = UserController;
