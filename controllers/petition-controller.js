@@ -16,10 +16,11 @@ class PetitionController {
                 if (rows.length > 0) {
                     return res.redirect("/thanks");
                 } else {
-                    res.render("petition", { error });
+                    return res.render("petition");
                 }
             })
             .catch((err) => {
+                console.log("errpr is", err);
                 res.render("petition", { error });
             });
     }
@@ -28,8 +29,8 @@ class PetitionController {
         const { signature } = req.body;
         const { user } = req.session;
         addSignatory(signature, user, new Date())
-            .then((signatory) => {
-                req.session.signatoryId = signatory.rows[0].id;
+            .then(({ rows }) => {
+                req.session.signatoryId = rows[0].id;
                 res.redirect("/thanks");
             })
             .catch((err) => {

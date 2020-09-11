@@ -35,10 +35,27 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use((req, res, next) => {
+    if (
+        req.session.userId &&
+        (req.url === "/login" || req.url === "/registration")
+    ) {
+        res.redirect("/petition");
+    } else {
+        next();
+    }
+});
+
 app.use("/profile", profileRouter);
 app.use("/", authRouter);
 app.use(router);
 
-app.listen(process.env.PORT || 8080, () =>
-    console.log("petition server running")
-);
+// app.listen(process.env.PORT || 8080, () =>
+//     console.log("petition server running")
+// );
+
+if (require.main == module) {
+    app.listen(process.env.PORT || 8080);
+}
+
+module.exports = app;

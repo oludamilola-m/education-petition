@@ -5,10 +5,7 @@
     "scripts": {
         "test": "jest",
         "start": "node index.js",
-        "test-env": "cross-env NODE_ENV=test nodemon",
-        "e2e": "cypress run --browser chrome",
-        "e2e-headless": "cypress run",
-        "e2e-m": "cypress open"
+        "test-env": "cross-env NODE_ENV=test nodemon"
     },
     "engines": {
         "node": "10.15.3"

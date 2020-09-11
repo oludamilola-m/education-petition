@@ -1,14 +1,14 @@
 const spicedPg = require("spiced-pg");
 require("dotenv").config();
 
-let dbUrl;
+// let dbUrl;
 
-if (process.env.NODE_ENV == "test") {
-    dbUrl = process.env.TEST_DB_URL;
-} else {
-    dbUrl = process.env.DB_URL;
-}
-const db = spicedPg(process.env.DATABASE_URL || dbUrl);
+// if (process.env.NODE_ENV == "test") {
+//     dbUrl = process.env.TEST_DB_URL;
+// } else {
+//     dbUrl = process.env.DB_URL;
+// }
+const db = spicedPg(process.env.DATABASE_URL || process.env.DB_URL);
 
 module.exports.addSignatory = (signature, user, signedAt) => {
     return db.query(

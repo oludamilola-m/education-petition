@@ -12,7 +12,6 @@ class ProfileController {
         getProfile(req.session.user.id)
             .then(({ rows }) => {
                 res.locals.userProfile = rows[0];
-                console.log("ssss userProfile", res.locals.userProfile);
                 return res.render("profile");
             })
             .catch((err) => {

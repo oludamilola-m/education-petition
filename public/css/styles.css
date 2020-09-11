@@ -109,7 +109,6 @@ form {
 #draw {
     border: 1px solid #446cb3;
     border-radius: 50px;
-    /* background-color: white; */
 }
 
 /* thanks template */
@@ -168,7 +167,7 @@ form {
 
 .delete-account-btn {
     border: none;
-    color: #446cb3;
+    color: #c13f3f;
     cursor: pointer;
     font-size: 17px;
     margin-top: 0;
@@ -177,7 +176,6 @@ form {
 .content a:hover,
 .delete-btn:hover,
 .delete-account-btn:hover {
-    color: #1c284a;
     font-size: 18px;
     text-decoration: underline;
     outline: none;
@@ -257,6 +255,15 @@ main {
     flex: 2;
     padding-top: 50px;
     text-align: center;
+}
+
+.profile-content {
+    margin-top: 50px;
+}
+
+.profile-content p {
+    font-size: 20px;
+    /* margin-top: 50px; */
 }
 
 .signup-content p:nth-child(1),
