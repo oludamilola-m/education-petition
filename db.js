@@ -93,6 +93,10 @@ module.exports.getUserProfile = (id) => {
     );
 };
 
+module.exports.getProfile = (id) => {
+    return db.query(`SELECT *  FROM user_profiles WHERE user_id = $1`, [id]);
+};
+
 module.exports.updateUser = (firstName, lastName, email, id) => {
     return db.query(
         `UPDATE users

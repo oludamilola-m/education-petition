@@ -3,15 +3,17 @@ const {
     createProfile,
     findSignersByCity,
     getUserProfile,
+    getProfile,
     ...db
 } = require("../db");
 
 class ProfileController {
     static getProfileDetails(req, res) {
-        getUserProfile(req.session.user.id)
+        getProfile(req.session.user.id)
             .then(({ rows }) => {
                 res.locals.userProfile = rows[0];
-                res.render("profile");
+                console.log("ssss userProfile", res.locals.userProfile);
+                return res.render("profile");
             })
             .catch((err) => {
                 res.render("profile");

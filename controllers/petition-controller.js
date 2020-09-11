@@ -70,8 +70,6 @@ class PetitionController {
                     return row.user_id === req.session.userId;
                 });
 
-                console.log("have i signed", signed);
-
                 if (!signed) {
                     return res.redirect("/petition");
                 }
