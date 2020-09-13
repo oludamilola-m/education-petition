@@ -3,6 +3,7 @@ const router = express.Router();
 
 const PetitionController = require("../controllers/petition-controller");
 const UserController = require("../controllers/user-controller");
+const { ensureLoggedIn } = require("../middlewares/auth-middleware");
 
 router.get("/", (req, res) => {
     res.redirect("/petition");
@@ -15,7 +16,11 @@ router.get("/thanks", PetitionController.thanks);
 router.get("/signers", PetitionController.getAllSignatories);
 
 //get city
-router.get("/signers/:city", PetitionController.getSignersByCity);
+router.get(
+    "/signers/:city",
+    ensureLoggedIn,
+    PetitionController.getSignersByCity
+);
 
 router.post("/users/delete", UserController.deleteUser);
 module.exports = router;
