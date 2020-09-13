@@ -62,7 +62,7 @@ module.exports.createProfile = (age, city, url, user) => {
 
 module.exports.getSigners = () => {
     return db.query(
-        `SELECT signatories.id, signatories.user_id, first_name, last_name, city, age FROM signatories
+        `SELECT signatories.id, signatories.user_id, first_name, last_name, city, age, url FROM signatories
     JOIN users
     ON users.id = signatories.user_id
     LEFT JOIN user_profiles

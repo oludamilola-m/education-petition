@@ -74,6 +74,7 @@ class PetitionController {
                 if (!signed) {
                     return res.redirect("/petition");
                 }
+                console.log(rows);
                 res.render("signers", {
                     signers: rows,
                     helpers: {
