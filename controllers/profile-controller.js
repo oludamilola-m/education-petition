@@ -1,4 +1,6 @@
 const bc = require("../bc");
+const isValidUrl = require("../utilities/url-validator");
+
 const {
     createProfile,
     findSignersByCity,
@@ -19,17 +21,22 @@ class ProfileController {
             });
     }
 
-    static profile(req, res) {
+    static createUserProfile(req, res) {
         const { age, city, url } = req.body;
         const { user } = req.session;
 
-        createProfile(age, city, url, user)
-            .then(({ rows }) => {
+        if (url !== "" && !isValidUrl(url)) {
+            req.session.error = "invalid url";
+            return res.redirect("/profile");
+        }
+        const formattedAge = age === "" ? null : age;
+        createProfile(formattedAge, city, url, user)
+            .then(() => {
                 return res.redirect("/petition");
             })
             .catch((err) => {
                 console.log("err: ", err);
-                res.redirect("/registration");
+                res.redirect("/profile");
             });
     }
 
@@ -37,6 +44,7 @@ class ProfileController {
         const error = req.session.error;
         req.session.error = null;
         res.locals.error = error;
+
         getUserProfile(req.session.user.id)
             .then(({ rows }) => {
                 res.render("edit-profile", {
@@ -59,7 +67,14 @@ class ProfileController {
             city,
             url,
         } = req.body;
-        db.updateProfile(age, city, url, userId)
+
+        if (url !== "" && !isValidUrl(url)) {
+            req.session.error = "invalid url";
+            return res.redirect("/profile/edit");
+        }
+
+        const formattedAge = age === "" ? null : age;
+        db.updateProfile(formattedAge, city, url, userId)
             .then(() => {
                 if (password === "") {
                     db.updateUser(firstName, lastName, email, userId)
@@ -67,7 +82,6 @@ class ProfileController {
                             return res.redirect("/thanks");
                         })
                         .catch((err) => {
-                            console.log(err);
                             req.session.error = "Could not update profile";
                             res.redirect("/profile/edit");
                         });
