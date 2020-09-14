@@ -21,7 +21,7 @@ const isProtectedPath = (path) => {
     return PROTECTED_PATHS.includes(path);
 };
 
-const ensureLoggedIn = (req, res) => {
+const ensureLoggedIn = (req, res, next) => {
     if (!isLoggedIn(req)) {
         res.redirect("/registration");
     } else {
