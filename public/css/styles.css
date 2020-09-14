@@ -1,243 +1,243 @@
 * {
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #f0f1f5;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.6rem;
-    line-height: 2.4004rem;
+  background-color: #f0f1f5;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  line-height: 2.4004rem;
 }
 
 .wrapper {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .home {
-    display: flex;
-    height: 100vh;
-    padding: 50px 30px;
+  display: flex;
+  height: 100vh;
+  padding: 50px 30px;
 }
 
 .image {
-    background: url("/images/background-image.png");
-    flex: 2;
-    width: 50%;
-    background-size: cover;
-    background-position: 50%, 50%;
-    height: 590px;
-    display: block;
+  background: url("/images/background-image.png");
+  flex: 2;
+  width: 50%;
+  background-size: cover;
+  background-position: 50%, 50%;
+  height: 590px;
+  display: block;
 }
 
 .details {
-    flex: 3;
-    align-items: center;
-    padding: 15px 30px;
+  flex: 3;
+  align-items: center;
+  padding: 15px 30px;
 }
 
 .section-content h2 {
-    color: #446cb3;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 4rem;
-    font-weight: 200;
-    line-height: 9rem;
+  color: #446cb3;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 4rem;
+  font-weight: 200;
+  line-height: 9rem;
 }
 .section-content p {
-    color: #666;
+  color: #666;
 }
 
 .textField {
-    background-color: #f0f1f5;
-    border: 1px solid #446cb3;
-    border-radius: 30px;
-    color: #555;
-    padding: 15px 25px;
-    width: 90%;
+  background-color: #f0f1f5;
+  border: 1px solid #446cb3;
+  border-radius: 30px;
+  color: #555;
+  padding: 15px 25px;
+  width: 90%;
 }
 
 .textField:focus {
-    border: 1px solid #8897b1;
-    border-radius: 30px;
-    outline: none;
+  border: 1px solid #8897b1;
+  border-radius: 30px;
+  outline: none;
 }
 
 .signature {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .sumbit-btn {
-    background-color: #446cb3;
-    border: none;
-    border-radius: 25px;
-    color: #fff;
-    display: block;
-    font-size: 17px;
-    margin-top: 20px;
-    padding: 15px;
-    width: 15%;
+  background-color: #446cb3;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  display: block;
+  font-size: 17px;
+  margin-top: 20px;
+  padding: 15px;
+  width: 15%;
 }
 
 .sumbit-btn:hover {
-    background-color: #fff;
-    border: 1px solid #446cb3;
-    color: #446cb3;
+  background-color: #fff;
+  border: 1px solid #446cb3;
+  color: #446cb3;
 }
 
 ::placeholder {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 label {
-    display: block;
-    font-size: 14px;
-    margin-left: 20px;
+  display: block;
+  font-size: 14px;
+  margin-left: 20px;
 }
 
 .input-group {
-    display: flex;
+  display: flex;
 }
 
 .input-group div {
-    flex: 1;
+  flex: 1;
 }
 
 form {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 
 #draw {
-    border: 1px solid #446cb3;
-    border-radius: 50px;
+  border: 1px solid #446cb3;
+  border-radius: 50px;
 }
 
 /* thanks template */
 
 .content {
-    margin: auto;
-    margin-top: 100px;
-    text-align: center;
-    width: 50%;
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+  width: 50%;
 }
 
 .content img {
-    width: 40%;
+  width: 40%;
 }
 
 .content a {
-    color: #446cb3;
-    display: block;
-    font-size: 15px;
-    margin-top: 10px;
-    text-decoration: none;
+  color: #446cb3;
+  display: block;
+  font-size: 15px;
+  margin-top: 10px;
+  text-decoration: none;
 }
 
 .content h3 {
-    color: #446cb3;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 2rem;
-    font-weight: 300;
-    line-height: 3rem;
+  color: #446cb3;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 3rem;
 }
 
 .content p {
-    color: #666;
-    font-size: 18px;
-    line-height: 1.4;
-    margin-bottom: 50px;
-    margin-top: 30px;
+  color: #666;
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
 
 .content img {
-    margin-left: 150px;
-    margin-bottom: 20px;
+  margin-left: 150px;
+  margin-bottom: 20px;
 }
 
 .delete-form,
 .delete-account-form {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .delete-btn {
-    border: none;
-    color: #446cb3;
-    cursor: pointer;
-    font-size: 17px;
+  border: none;
+  color: #446cb3;
+  cursor: pointer;
+  font-size: 17px;
 }
 
 .delete-account-btn {
-    border: none;
-    color: #c13f3f;
-    cursor: pointer;
-    font-size: 17px;
-    margin-top: 0;
+  border: none;
+  color: #c13f3f;
+  cursor: pointer;
+  font-size: 17px;
+  margin-top: 0;
 }
 
 .content a:hover,
 .delete-btn:hover,
 .delete-account-btn:hover {
-    font-size: 18px;
-    text-decoration: underline;
-    outline: none;
+  font-size: 18px;
+  text-decoration: underline;
+  outline: none;
 }
 
 footer {
-    bottom: 0;
-    color: #666;
-    font-size: 15px;
-    margin: auto;
-    text-align: center;
+  bottom: 0;
+  color: #666;
+  font-size: 15px;
+  margin: auto;
+  text-align: center;
 
-    position: relative;
+  position: relative;
 }
 
 .signers {
-    margin-top: 100px;
-    text-align: center;
+  margin-top: 100px;
+  text-align: center;
 }
 
 .signers h4 {
-    color: #446cb3;
-    margin: auto;
-    margin-bottom: 30px;
-    width: 35%;
+  color: #446cb3;
+  margin: auto;
+  margin-bottom: 30px;
+  width: 35%;
 }
 
 .signers p {
-    color: #666666;
-    font-size: 18px;
+  color: #666666;
+  font-size: 18px;
 }
 
 .signers-city {
-    font-size: 18px;
-    margin-left: 10px;
+  font-size: 18px;
+  margin-left: 10px;
 }
 
 .signers-url {
-    font-size: 18px;
-    margin-right: 10px;
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 .signers-url:hover,
 .signers-city:hover {
-    color: red;
-    font-style: italic;
+  color: red;
+  font-style: italic;
 }
 
 main {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 #form-errors {
-    background: #9a3333;
-    border-radius: 5px;
-    padding-left: 30px;
-    margin-bottom: 15px;
+  background: #9a3333;
+  border-radius: 5px;
+  padding-left: 30px;
+  margin-bottom: 15px;
 }
 
 #form-errors li {
-    font-size: 13px;
-    color: #fff;
+  font-size: 13px;
+  color: #fff;
 }
 
 /* registration */
@@ -245,115 +245,132 @@ main {
 .registration,
 .login,
 .profile {
-    display: flex;
-    min-height: 100vh;
+  display: flex;
+  min-height: 100vh;
 }
 
 .signup-content,
 .login-content,
 .profile-content {
-    flex: 2;
-    padding-top: 50px;
-    text-align: center;
+  flex: 2;
+  padding-top: 50px;
+  text-align: center;
 }
 
 .profile-content {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .profile-content p {
-    font-size: 20px;
-    /* margin-top: 50px; */
+  font-size: 20px;
+  /* margin-top: 50px; */
 }
 
 .signup-content p:nth-child(1),
 .login-content p:nth-child(1) {
-    color: #2d385e;
-    font-size: 23px;
-    margin-bottom: 20px;
+  color: #2d385e;
+  font-size: 23px;
+  margin-bottom: 20px;
 }
 
 .signup-content p:nth-child(2) {
-    color: #2d385e;
-    font-size: 20px;
+  color: #2d385e;
+  font-size: 20px;
 }
 
 .form-control {
-    background-color: #fff;
-    border: solid 1px #bcc2ce;
-    border-radius: 3px;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.1);
-    color: #333333;
-    font-size: 18px;
-    height: 50px;
-    margin-bottom: 15px;
-    padding: 13px 12px;
-    outline: none;
-    width: 75%;
+  background-color: #fff;
+  border: solid 1px #bcc2ce;
+  border-radius: 3px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.1);
+  color: #333333;
+  font-size: 18px;
+  height: 50px;
+  margin-bottom: 15px;
+  padding: 13px 12px;
+  outline: none;
+  width: 75%;
 }
 
 .form-group label {
-    margin-left: 76px;
-    margin-top: 0;
-    text-align: left;
+  margin-left: 76px;
+  margin-top: 0;
+  text-align: left;
 }
 
 #registration-form p,
 #registration-form a {
-    color: #2d385e;
-    font-size: 15px;
+  color: #2d385e;
+  font-size: 15px;
 }
 
 .signup-btn,
 .login-btn {
-    background-color: #344063;
-    border-color: #fff;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    outline: none;
-    padding: 15px 50px;
+  background-color: #344063;
+  border-color: #fff;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  outline: none;
+  padding: 15px 50px;
 }
 
 .signup-btn:hover,
 .login-btn:hover {
-    background-color: #fff;
-    color: #344063;
-    font-weight: bold;
+  background-color: #fff;
+  color: #344063;
+  font-weight: bold;
 }
 
 .reg-image,
 .login-image,
 .profile-image {
-    background: url("/images/background-image.png");
-    background-color: #344063;
-    background-size: cover;
-    background-position: 50%, 50%;
-    flex: 3.5;
-    width: 50%;
+  background: url("/images/background-image.png");
+  background-color: #344063;
+  background-size: cover;
+  background-position: 50%, 50%;
+  flex: 3.5;
+  width: 50%;
 }
 
 .registration-errors {
-    margin: auto;
-    text-align: left;
-    width: 75%;
+  margin: auto;
+  text-align: left;
+  width: 75%;
+}
+
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
+.alert {
+  font-size: 14px;
+  padding: 5px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.u-text-center {
+  text-align: center;
 }
 
 @media (max-width: 600px) {
-    .profile-image,
-    .login-image,
-    .reg-image {
-        display: none;
-    }
+  .profile-image,
+  .login-image,
+  .reg-image {
+    display: none;
+  }
 
-    .content {
-        margin: auto;
-        margin-top: 30px;
-        text-align: center;
-        width: 80%;
-    }
+  .content {
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+    width: 80%;
+  }
 }

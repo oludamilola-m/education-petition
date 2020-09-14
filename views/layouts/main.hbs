@@ -10,10 +10,15 @@
     <link rel="stylesheet" href="/css/navbar.css">
     <title>Petition</title>
 </head>
-<body>
-    
+<body> 
     <div class="wrapper">
         {{>navbar}}
+        {{#if messages.error}}
+          <div class="alert alert-warning fade in n-m text-center u-text-center">
+            {{ messages.error}}
+          </div>
+        {{/if}}
+          
         {{{body}}}
         <footer>&copy Osiname oludamilola</footer>
     </div> 

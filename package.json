@@ -1,42 +1,43 @@
 {
-    "name": "petition",
-    "version": "1.0.0",
-    "main": "index.js",
-    "scripts": {
-        "test": "jest",
-        "start": "node index.js",
-        "test-env": "cross-env NODE_ENV=test nodemon"
-    },
-    "engines": {
-        "node": "10.15.3"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "bcryptjs": "^2.4.3",
-        "cookie-parser": "^1.4.3",
-        "cookie-session": "^2.0.0-alpha.1",
-        "cross-env": "^7.0.2",
-        "csurf": "^1.9.0",
-        "dotenv": "^8.2.0",
-        "express": "^4.14.0",
-        "express-handlebars": "^3.0.0",
-        "jest": "^25.1.0",
-        "redis": "^2.6.2",
-        "spiced-pg": "^1.0.0",
-        "supertest": "^4.0.2"
-    },
-    "devDependencies": {
-        "cypress": "^5.1.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/spicedacademy/cumin-petition.git"
-    },
-    "keywords": [],
-    "bugs": {
-        "url": "https://github.com/spicedacademy/cumin-petition/issues"
-    },
-    "homepage": "https://github.com/spicedacademy/cumin-petition#readme",
-    "description": ""
+  "name": "petition",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js",
+    "test-env": "cross-env NODE_ENV=test nodemon"
+  },
+  "engines": {
+    "node": "10.15.3"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-alpha.1",
+    "cross-env": "^7.0.2",
+    "csurf": "^1.9.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.14.0",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^3.0.0",
+    "jest": "^25.1.0",
+    "redis": "^2.6.2",
+    "spiced-pg": "^1.0.0",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "cypress": "^5.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spicedacademy/cumin-petition.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/spicedacademy/cumin-petition/issues"
+  },
+  "homepage": "https://github.com/spicedacademy/cumin-petition#readme",
+  "description": ""
 }
